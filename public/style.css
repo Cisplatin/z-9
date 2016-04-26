@@ -21,16 +21,26 @@ body {
 
 .red-box {
     background-color: #FF3535;
-    width: 50%;
-    margin: 0 auto;
     padding: 50px;
 }
 
-/* Header */
+.green-box {
+    background-color: #B2F232;
+    padding: 25px;
+}
+
+.blue-box {
+    background-color: #25B3B3;
+    padding: 25px;
+}
 
 .header {
     display: table;
     position: relative;
     width: 100%;
     height: 100%;
+}
+
+.row.extra-bottom-padding {
+    margin-bottom: 25px
 }
