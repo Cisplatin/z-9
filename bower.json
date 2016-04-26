@@ -1,0 +1,18 @@
+{
+  "name": "z-9",
+  "description": "An easy website for URL shortening and branding.",
+  "main": "app.js",
+  "authors": [
+    "Simon Hajjar <simon.j.hajjar@gmail.com>"
+  ],
+  "license": "MIT",
+  "homepage": "https://github.com/Cisplatin/z-9",
+  "moduleType": [],
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}
