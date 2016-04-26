@@ -18,6 +18,7 @@
   "homepage": "https://github.com/Cisplatin/z-9#readme",
   "dependencies": {
     "bower": "^1.7.9",
+    "cryptohat": "^1.0.1",
     "express": "^4.13.4"
   }
 }
