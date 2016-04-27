@@ -6,7 +6,7 @@ const Ddos = require('ddos')
 
 const app = express();
 
-const port = 3000;
+const port = 80;
 app.use(express.static(__dirname + '/public'));
 app.use('/bower_components', express.static('bower_components'));
 app.use(bodyParser.urlencoded({extended: true}));
@@ -70,7 +70,7 @@ app.post('/add', function(req, res) {
     res.writeHead(200, {
         "Content-Type": "text/plain"
     });
-    res.end(req.get('host') + '/' + shrunk);
+    res.end('/' + shrunk);
 });
 
 app.listen(port, function () {

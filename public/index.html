@@ -76,7 +76,7 @@
         if($('#url').val() !== "") {
             var data = {'url' : $('#url').val()};
             $.post('/add', data, function(res) {
-                $("#tiny").text(res);
+                $("#tiny").text(window.location.host + res);
                 $("#link").attr("href", res);
             });
         }

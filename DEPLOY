@@ -9,6 +9,6 @@ ssh root@$HOST bash -c "'
     cd /root/z-9
     git checkout master
     git pull
-    pm2 start app.js
+    pm2 restart app.js
     exit
 '"
