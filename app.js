@@ -25,16 +25,17 @@ app.get('/', function (req, res) {
 });
 
 app.post('/add', function(req, res) {
-    // TODO Make sure that the generated string doesn't conflict
     // TODO Add an expiry date to each URL
     // TODO Allow for custom URL names
     // TODO Check for valid URL
     // TODO Remove URLs when too many are stored
     // TODO Handle invalid/expired links
     // TODO Handle empty request bodies
-    var url = req.body.url;
-    var shrunk = cryptohat().substr(0, HASH_LENGTH);
-    maps[shrunk] = url;
+    // TODO Add a copy link button
+    do {
+        var shrunk = cryptohat().substr(0, HASH_LENGTH);
+    } while(shrunk in maps);
+    maps[shrunk] = req.body.url;
     res.writeHead(200, {
         "Content-Type": "text/plain"
     });
