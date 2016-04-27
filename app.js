@@ -32,10 +32,22 @@ app.post('/add', function(req, res) {
     // TODO Handle invalid/expired links
     // TODO Handle empty request bodies
     // TODO Add a copy link button
+
+    // Generate a new ID for the given URL
     do {
         var shrunk = cryptohat().substr(0, HASH_LENGTH);
     } while(shrunk in maps);
-    maps[shrunk] = req.body.url;
+
+    // Filter the URL as required. Specifically, if the protocol isn't specified
+    // as HTTP or HTTPS, then we add HTTP so that Node knows where to go
+    var url = req.body.url;
+    var protocol = 'http://';
+    if (url.substr(0, protocol.length) !== protocol) {
+        url = protocol + url;
+    }
+    maps[shrunk] = url;
+
+    // Return the new URl
     res.writeHead(200, {
         "Content-Type": "text/plain"
     });
