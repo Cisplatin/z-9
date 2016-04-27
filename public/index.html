@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-xs-4">
                     <div class="green-box">
-                        <h5 id="tiny">∅</h5>
+                        <a href="/" id="link"><h5 id="tiny">∅</h5></a>
                     </div>
                 <div>
         </div>
@@ -65,6 +65,7 @@
         var data = {'url' : $('#url').val()};
         $.post('/add', data, function(res) {
             $("#tiny").text(res);
+            $("#link").attr("href", res);
         });
     });
     </script>
