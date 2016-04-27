@@ -14,7 +14,7 @@ var maps = {};
 
 app.get('/*', function(req, res, next) {
     if(req.url.substr(1) in maps) {
-        res.redirect(maps[req.url.substr(1)]);
+        res.redirect(maps[req.url.substr(1)]['url']);
     } else {
         next();
     }
@@ -25,7 +25,6 @@ app.get('/', function (req, res) {
 });
 
 app.post('/add', function(req, res) {
-    // TODO Add an expiry date to each URL
     // TODO Remove URLs when too many are stored
     // TODO Handle invalid/expired links
     // TODO Add a copy link button
@@ -43,9 +42,14 @@ app.post('/add', function(req, res) {
     if (url.substr(0, protocol.length) !== protocol) {
         url = protocol + url;
     }
-    maps[shrunk] = url;
+    expiry = new Date();
+    expiry.setHours(expiry.getHours() + 24);
+    maps[shrunk] = {
+        'url' : url,
+        'expiry' : expiry,
+    };
 
-    // Return the new URl
+    // Return the new URL
     res.writeHead(200, {
         "Content-Type": "text/plain"
     });
