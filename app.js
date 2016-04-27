@@ -33,7 +33,6 @@ app.post('/add', function(req, res) {
     // TODO Handle invalid/expired links
     // TODO Handle empty request bodies
     var url = req.body.url;
-    console.log(req.body);
     var shrunk = cryptohat().substr(0, HASH_LENGTH);
     maps[shrunk] = url;
     res.writeHead(200, {
