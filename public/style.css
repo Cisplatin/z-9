@@ -22,18 +22,17 @@ body {
 }
 
 .red-box {
-    background-color: #FF3535;
+    background-color: #FF8A33;
     padding: 50px;
 }
 
-.green-box {
-    background-color: #B2F232;
+.blue-box {
+    background-color: #FF8A33;
     padding: 30px;
 }
 
-.blue-box {
-    background-color: #25B3B3;
-    padding: 30px;
+.btn-style {
+    background-color: #FFBB88;
 }
 
 .header {
