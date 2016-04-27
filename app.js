@@ -26,12 +26,10 @@ app.get('/', function (req, res) {
 
 app.post('/add', function(req, res) {
     // TODO Add an expiry date to each URL
-    // TODO Allow for custom URL names
-    // TODO Check for valid URL
     // TODO Remove URLs when too many are stored
     // TODO Handle invalid/expired links
-    // TODO Handle empty request bodies
     // TODO Add a copy link button
+    // TODO Spamming protection
 
     // Generate a new ID for the given URL
     do {

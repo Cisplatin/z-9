@@ -68,11 +68,13 @@
     <!-- Submission sensing -->
     <script>
     var add = function() {
-        var data = {'url' : $('#url').val()};
-        $.post('/add', data, function(res) {
-            $("#tiny").text(res);
-            $("#link").attr("href", res);
-        });
+        if($('#url').val() !== "") {
+            var data = {'url' : $('#url').val()};
+            $.post('/add', data, function(res) {
+                $("#tiny").text(res);
+                $("#link").attr("href", res);
+            });
+        }
     };
 
     $(document).keypress(function(e) {
