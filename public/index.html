@@ -49,7 +49,7 @@
                 </div>
                 <div class="col-xs-4">
                     <div class="green-box">
-                        <p id="tiny">∅</p>
+                        <h5 id="tiny">∅</h5>
                     </div>
                 <div>
         </div>
@@ -64,7 +64,7 @@
     $('#submit').on('click', function () {
         var data = {'url' : $('#url').val()};
         $.post('/add', data, function(res) {
-            $("#tiny").text("z-9.pw/" + res);
+            $("#tiny").text(res);
         });
     });
     </script>

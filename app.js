@@ -38,7 +38,7 @@ app.post('/add', function(req, res) {
     res.writeHead(200, {
         "Content-Type": "text/plain"
     });
-    res.end(shrunk);
+    res.end(req.get('host') + '/' + shrunk);
 });
 
 app.listen(port, function () {
