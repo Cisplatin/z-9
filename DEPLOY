@@ -1,0 +1,14 @@
+#!/bin/bash
+
+HOST=z-9.pw
+
+# A script used to update the site. Simply run if you have the SSH key.
+# If you don't have the SSH key, stop trying to get into my server.
+
+ssh root@$HOST bash -c "'
+    cd /root/z-9
+    git checkout master
+    git pull
+    pm2 start app.js
+    exit
+'"
