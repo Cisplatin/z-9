@@ -61,13 +61,21 @@
 
     <!-- Submission sensing -->
     <script>
-    $('#submit').on('click', function () {
+    var add = function() {
         var data = {'url' : $('#url').val()};
         $.post('/add', data, function(res) {
             $("#tiny").text(res);
             $("#link").attr("href", res);
         });
+    };
+
+    $(document).keypress(function(e) {
+        if(e.which == 13) {
+            add();
+        }
     });
+
+    $("#submit").on('click', add);
     </script>
 
 </body>
