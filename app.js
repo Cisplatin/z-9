@@ -2,6 +2,7 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const cryptohat = require('cryptohat');
 const cron = require('cron');
+const Ddos = require('ddos')
 
 const app = express();
 
@@ -9,6 +10,9 @@ const port = 3000;
 app.use(express.static(__dirname + '/public'));
 app.use('/bower_components', express.static('bower_components'));
 app.use(bodyParser.urlencoded({extended: true}));
+
+const ddos = new Ddos;
+app.use(ddos.express);
 
 const HASH_LENGTH = 5;
 const CLEANSE_FREQ = '0 0 4 * * *';
@@ -39,7 +43,6 @@ app.get('/', function (req, res) {
 app.post('/add', function(req, res) {
     // TODO Handle invalid/expired links
     // TODO Add a copy link button
-    // TODO Spamming protection
 
     // Generate a new ID for the given URL
     do {
