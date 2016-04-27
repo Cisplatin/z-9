@@ -43,7 +43,9 @@ app.get('/', function (req, res) {
 app.post('/add', function(req, res) {
     // TODO Handle invalid/expired links
     // TODO Add a copy link button
-    // TODO Actually host the site
+    // TODO Work on design
+    // TODO Return same link for already generated sites
+    // TODO Make the pressed link work properly
 
     // Generate a new ID for the given URL
     do {
