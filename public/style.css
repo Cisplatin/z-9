@@ -21,6 +21,10 @@ body {
     font-weight: 700;
 }
 
+.resp {
+    font-size: 1vw;
+}
+
 .red-box {
     background-color: #FF8A33;
     padding: 50px;
