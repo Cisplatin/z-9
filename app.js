@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const cryptohat = require('cryptohat');
+const cron = require('cron');
 
 const app = express();
 
@@ -10,7 +11,18 @@ app.use('/bower_components', express.static('bower_components'));
 app.use(bodyParser.urlencoded({extended: true}));
 
 const HASH_LENGTH = 5;
+const CLEANSE_FREQ = '0 0 4 * * *';
+const EXPIRY_TIME = 48;
 var maps = {};
+
+var cleanse = new cron.CronJob(CLEANSE_FREQ, function() {
+    var current_date = new Date();
+    for(var key in maps) {
+        if(maps[key]['expiry'] < current_date) {
+            delete maps[key];
+        }
+    }
+});
 
 app.get('/*', function(req, res, next) {
     if(req.url.substr(1) in maps) {
@@ -25,7 +37,6 @@ app.get('/', function (req, res) {
 });
 
 app.post('/add', function(req, res) {
-    // TODO Remove URLs when too many are stored
     // TODO Handle invalid/expired links
     // TODO Add a copy link button
     // TODO Spamming protection
@@ -43,7 +54,7 @@ app.post('/add', function(req, res) {
         url = protocol + url;
     }
     expiry = new Date();
-    expiry.setHours(expiry.getHours() + 24);
+    expiry.setHours(expiry.getHours() + EXPIRY_TIME);
     maps[shrunk] = {
         'url' : url,
         'expiry' : expiry,
