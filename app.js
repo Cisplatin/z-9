@@ -11,7 +11,7 @@ app.use(express.static(__dirname + '/public'));
 app.use('/bower_components', express.static('bower_components'));
 app.use(bodyParser.urlencoded({extended: true}));
 
-const ddos = new Ddos;
+const ddos = new Ddos({'silentStart' : true});
 app.use(ddos.express);
 
 const HASH_LENGTH = 5;
