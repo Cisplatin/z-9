@@ -54,7 +54,7 @@ app.post('/add', function(req, res) {
 
     // Filter the URL as required. Specifically, if the protocol isn't specified
     // as HTTP or HTTPS, then we add HTTP so that Node knows where to go
-    var url = req.body.url;
+    var url = req.body.url.trim();
     var protocol = 'http://';
     if (url.substr(0, protocol.length) !== protocol) {
         url = protocol + url;
@@ -62,7 +62,7 @@ app.post('/add', function(req, res) {
     expiry = new Date();
     expiry.setHours(expiry.getHours() + EXPIRY_TIME);
     maps[shrunk] = {
-        'url' : url,
+        'url' : url.trim,
         'expiry' : expiry,
     };
 
