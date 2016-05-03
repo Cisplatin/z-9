@@ -46,6 +46,7 @@ app.post('/add', function(req, res) {
     // TODO Work on design
     // TODO Return same link for already generated sites
     // TODO Make the pressed link work properly
+    // TODO Handle https websites
 
     // Generate a new ID for the given URL
     do {
