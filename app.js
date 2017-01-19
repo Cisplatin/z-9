@@ -30,7 +30,7 @@ var cleanse = new cron.CronJob(CLEANSE_FREQ, function() {
         db.each("SELECT rowid AS id, expiry FROM user_info", function(err, row) {
            if (new Date(row.expiry) < current_date) {
                 db.run("DELETE FROM user_info WHERE rowid=(?)", row.id, function(error) {
-                if(error){
+                if (error){
                     console.log(error);
                 } else {
                     console.log("Deletion Successful");
@@ -45,16 +45,16 @@ var cleanse = new cron.CronJob(CLEANSE_FREQ, function() {
 app.get('/*', function(req, res, next) {
     db.serialize(function() {
         db.each("SELECT url FROM user_info WHERE shrunk = '" + req.url.substr(1) + "'", function(err, row) {
-           if(err) {
+           if (err) {
                 console.log(err);
            } else {
                 res.redirect(row.url);
            }
         }, function(error, rows) { // oncomplete functions
-            if(error) {
+            if (error) {
                 console.log(error);
             } else {
-                if( rows === 0) { // the case where the url doesn't exist in db
+                if (rows === 0) { // the case where the url doesn't exist in db
                     next();
                 }
             }
