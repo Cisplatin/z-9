@@ -103,13 +103,14 @@ app.listen(port, function () {
 
 //initalizes the database i.e creates the db.url file if it doens't already exist
 function initDb() {
+    console.log("enter");
     if (!exists) {
         console.log("Creating DB file.");
-        fs.openSync(file, "w");
-        db.serialize(function() {
-            db.run("CREATE TABLE if not exists user_info (shrunk TEXT UNIQUE, url TEXT, expiry TEXT)");
-        });
+        fs.openSync(file, "w");    
     }
+    db.serialize(function() {
+        db.run("CREATE TABLE if not exists user_info (shrunk TEXT UNIQUE, url TEXT, expiry TEXT)");
+    });
 }
 
 //adds new urls to the database
