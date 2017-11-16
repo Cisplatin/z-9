@@ -50,7 +50,7 @@ app.get('/*', function(req, res, next) {
            } else {
                 res.redirect(row.url);
            }
-        }, function(error, rows) { // On-complete functions
+        }, function(error, rows) { // Oncomplete functions
             if (error) {
                 console.log(error);
             } else {
